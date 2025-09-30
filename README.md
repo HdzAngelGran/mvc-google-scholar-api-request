@@ -12,3 +12,7 @@ For the Innovation Center is crucial to automate their research and to be stored
 - MVC achiquecture patter
 - PostgreSQL database connectivity
 - Menu-driven user interface
+
+## Technical Report Summary
+
+[For Google Scholar API](./Technical_Report_Summary_Google_Scholar_API.pdf)
