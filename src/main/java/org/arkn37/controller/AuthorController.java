@@ -1,6 +1,6 @@
 package org.arkn37.controller;
 
-import org.arkn37.client.GoogleScholarClient;
+import org.arkn37.client.SerpApiClient;
 import org.arkn37.model.Author;
 import org.arkn37.model.Interest;
 import org.arkn37.view.AuthorView;
@@ -11,6 +11,7 @@ public class AuthorController {
 
     private final Author author;
     private final AuthorView authorView;
+    private final SerpApiClient serpApiClient = new SerpApiClient();
 
     public AuthorController(Author author, AuthorView authorView) {
         this.author = author;
@@ -67,6 +68,11 @@ public class AuthorController {
 
     public void updateView() {
         authorView.printAuthorDetails(getName(), getEmail(), getAffiliations(), getThumbnail(), getInterests());
+    }
+
+    public void getAuthorById(String authorId) throws Exception {
+        Author authorResponse = serpApiClient.getAuthorById(authorId);
+        updateAuthor(authorResponse);
     }
 
 }
