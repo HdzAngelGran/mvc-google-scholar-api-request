@@ -1,6 +1,8 @@
 plugins {
     id("java")
+    application
     id("io.freefair.lombok") version "9.0.0"
+    id("org.openjfx.javafxplugin") version "0.0.13"
 }
 
 group = "org.arkn37"
@@ -24,4 +26,13 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+javafx {
+    version = "17.0.14"
+    modules = listOf("javafx.controls", "javafx.fxml")
+}
+
+application {
+    mainClass.set("org.arkn37.Main")
 }
