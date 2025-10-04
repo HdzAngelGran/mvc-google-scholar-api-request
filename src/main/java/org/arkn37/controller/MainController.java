@@ -23,8 +23,11 @@ public class MainController {
         Parent home = homeLoader.load();
         FXMLLoader footerLoader = new FXMLLoader(getClass().getResource("../view/Footer.fxml"));
         Parent footer = footerLoader.load();
+        FXMLLoader searchLoader = new FXMLLoader(getClass().getResource("../view/Search.fxml"));
+        Parent search = searchLoader.load();
 
         pages.put("home", home);
+        pages.put("search", search);
 
         NavbarController navbarController = navbarLoader.getController();
 

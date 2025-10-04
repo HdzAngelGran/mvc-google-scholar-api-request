@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="20.0"
+      style="-fx-padding: 2em;"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.arkn37.controller.SearchController"
+>
+    <HBox>
+        <Label text="Author Search">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Label>
+    </HBox>
+    <GridPane>
+        <AnchorPane fx:id="list" prefWidth="200.0"/>
+        <AnchorPane fx:id="info" GridPane.columnIndex="1" prefWidth="100.0"/>
+    </GridPane>
+</VBox>
