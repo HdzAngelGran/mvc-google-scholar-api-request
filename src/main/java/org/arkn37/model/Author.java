@@ -1,5 +1,6 @@
 package org.arkn37.model;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,7 +11,8 @@ import java.util.List;
 @Setter
 @ToString
 public class Author {
-    private String author_id;
+    @SerializedName("author_id")
+    private String authorId;
     private String name;
     private String email;
     private String affiliations;

@@ -35,7 +35,7 @@ public class AuthorListCell extends ListCell<Author> {
             nameLabel.setText(author.getName());
             emailLabel.setText(author.getEmail());
             contentBox.setOnMouseClicked(event ->
-                    onItemClicked.accept(author.getAuthor_id())
+                    onItemClicked.accept(author.getAuthorId())
             );
             setGraphic(contentBox);
         }

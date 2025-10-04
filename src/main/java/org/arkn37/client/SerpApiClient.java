@@ -44,7 +44,7 @@ public class SerpApiClient {
                 });
 
         ResponseAuthor responseAuthor = new Gson().fromJson(response, ResponseAuthor.class);
-        checkResponseStatus(responseAuthor.getSearch_metadata());
+        checkResponseStatus(responseAuthor.getSearchMetadata());
 
         return responseAuthor.getAuthor();
     }
@@ -67,7 +67,7 @@ public class SerpApiClient {
                 });
 
         ResponseProfile responseAuthorsList = new Gson().fromJson(response, ResponseProfile.class);
-        checkResponseStatus(responseAuthorsList.getSearch_metadata());
+        checkResponseStatus(responseAuthorsList.getSearchMetadata());
 
         return responseAuthorsList.getProfiles().getAuthors();
     }
