@@ -1,22 +1,34 @@
 package org.arkn37.controller;
 
+import javafx.concurrent.Task;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import lombok.Setter;
 import org.arkn37.client.SerpApiClient;
 import org.arkn37.model.Author;
 import org.arkn37.model.Interest;
-import org.arkn37.view.AuthorView;
 
 import java.util.List;
 
 public class AuthorController {
 
-    private final Author author;
-    private final AuthorView authorView;
-    private final SerpApiClient serpApiClient = new SerpApiClient();
+    @FXML
+    private Label name;
 
-    public AuthorController(Author author, AuthorView authorView) {
-        this.author = author;
-        this.authorView = authorView;
-    }
+    @FXML
+    private Label email;
+
+    @FXML
+    private Label affiliations;
+
+    @FXML
+    private ProgressIndicator loadingAuthor;
+
+    @Setter
+    private Author author = new Author();
+
+    private final SerpApiClient serpApiClient = new SerpApiClient();
 
     public String getName() {
         return this.author.getName();
@@ -58,21 +70,59 @@ public class AuthorController {
         this.author.setInterests(interests);
     }
 
+    public void resetAuthor() {
+        setName("");
+        setEmail("");
+        setAffiliations("");
+        setThumbnail("");
+        setInterests(null);
+        updateView();
+    }
+
     public void updateAuthor(Author author) {
         setName(author.getName());
         setEmail(author.getEmail());
         setAffiliations(author.getAffiliations());
         setThumbnail(author.getThumbnail());
         setInterests(author.getInterests());
+        updateView();
     }
 
     public void updateView() {
-        authorView.printAuthorDetails(getName(), getEmail(), getAffiliations(), getThumbnail(), getInterests());
+        name.setText(getName());
+        email.setText(getEmail());
+        affiliations.setText(getAffiliations());
     }
 
-    public void getAuthorById(String authorId) throws Exception {
-        Author authorResponse = serpApiClient.getAuthorById(authorId);
-        updateAuthor(authorResponse);
+    @FXML
+    public void getAuthorById(String id) {
+        if (id == null || id.trim().isEmpty()) return;
+
+        Task<Author> getAuthorTask = new Task<>() {
+            @Override
+            protected Author call() throws Exception {
+                return serpApiClient.getAuthorById(id);
+            }
+        };
+
+        getAuthorTask.setOnRunning(event -> {
+            resetAuthor();
+            loadingAuthor.setVisible(true);
+        });
+
+        getAuthorTask.setOnSucceeded(event -> {
+            loadingAuthor.setVisible(false);
+            Author newAuthor = getAuthorTask.getValue();
+            updateAuthor(newAuthor);
+        });
+
+        getAuthorTask.setOnFailed(event -> {
+            resetAuthor();
+            loadingAuthor.setVisible(false);
+            getAuthorTask.getException().printStackTrace();
+        });
+
+        new Thread(getAuthorTask).start();
     }
 
 }
