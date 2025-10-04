@@ -19,12 +19,17 @@ public class MainController {
     public void initialize() throws IOException {
         FXMLLoader navbarLoader = new FXMLLoader(getClass().getResource("../view/Navbar.fxml"));
         Parent navbar = navbarLoader.load();
+        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("../view/Home.fxml"));
+        Parent home = homeLoader.load();
+
+        pages.put("home", home);
 
         NavbarController navbarController = navbarLoader.getController();
 
         navbarController.setMainController(this);
 
         this.mainPane.setTop(navbar);
+        changePage("home");
     }
 
     public void changePage(String pageName) {

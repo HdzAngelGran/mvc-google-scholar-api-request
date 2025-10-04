@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12">
+    <Label text="Welcome to the Home Page!">
+        <font>
+            <Font size="24.0" />
+        </font>F
+    </Label>
+    <Label text="Tecmilenio">
+      <font>
+         <Font size="18.0" />
+      </font>
+    </Label>
+    <Label text="Challenge 3" />
+</VBox>
