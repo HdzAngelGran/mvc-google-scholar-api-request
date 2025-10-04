@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER_LEFT"
+      spacing="10"
+      style="-fx-background-color: #f0f0f0; -fx-padding: 1em;"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.arkn37.controller.NavbarController"
+>
+    <Button onAction="#handlePageAction" text="Home" userData="home"/>
+    <Button onAction="#handlePageAction" text="Search" userData="search"/>
+</HBox>
