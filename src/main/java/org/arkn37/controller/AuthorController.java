@@ -7,7 +7,6 @@ import javafx.scene.control.ProgressIndicator;
 import lombok.Setter;
 import org.arkn37.client.SerpApiClient;
 import org.arkn37.model.Author;
-import org.arkn37.model.Interest;
 
 import java.util.List;
 
@@ -62,11 +61,11 @@ public class AuthorController {
         this.author.setThumbnail(thumbnail);
     }
 
-    public List<Interest> getInterests() {
+    public List<Object> getInterests() {
         return this.author.getInterests();
     }
 
-    public void setInterests(List<Interest> interests) {
+    public void setInterests(List<Object> interests) {
         this.author.setInterests(interests);
     }
 
