@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.arkn37.controller.SearchListController"
+>
+    <GridPane alignment="CENTER" hgap="10" vgap="10" VBox.vgrow="ALWAYS">
+        <TextField fx:id="authorName" prefWidth="100.0"/>
+        <Button onAction="#getAuthorByName" prefWidth="100.0" text="Search" GridPane.columnIndex="1"/>
+        <ListView fx:id="authorListView" prefHeight="200.0" prefWidth="500.0" style="-fx-padding: 1em;"
+                  GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <placeholder>
+                <VBox alignment="TOP_CENTER">
+                    <ProgressIndicator fx:id="loadingList" visible="false"/>
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: grey;" text="No content to display."/>
+                    <Label style="-fx-text-fill: dimgrey;" text="Enter an author's name above and click Search."/>
+                </VBox>
+            </placeholder>
+        </ListView>
+        <columnConstraints>
+            <ColumnConstraints maxWidth="267.8" minWidth="212.8" prefWidth="243.8"/>
+            <ColumnConstraints maxWidth="88.0" minWidth="28.0" prefWidth="57.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints/>
+            <RowConstraints/>
+        </rowConstraints>
+    </GridPane>
+</VBox>
