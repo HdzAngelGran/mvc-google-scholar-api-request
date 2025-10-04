@@ -21,6 +21,8 @@ public class MainController {
         Parent navbar = navbarLoader.load();
         FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("../view/Home.fxml"));
         Parent home = homeLoader.load();
+        FXMLLoader footerLoader = new FXMLLoader(getClass().getResource("../view/Footer.fxml"));
+        Parent footer = footerLoader.load();
 
         pages.put("home", home);
 
@@ -30,6 +32,7 @@ public class MainController {
 
         this.mainPane.setTop(navbar);
         changePage("home");
+        this.mainPane.setBottom(footer);
     }
 
     public void changePage(String pageName) {
