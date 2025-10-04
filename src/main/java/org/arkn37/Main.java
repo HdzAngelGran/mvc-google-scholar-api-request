@@ -1,32 +1,27 @@
 package org.arkn37;
 
-import org.arkn37.controller.AuthorController;
-import org.arkn37.controller.AuthorListController;
-import org.arkn37.model.Author;
-import org.arkn37.view.AuthorListView;
-import org.arkn37.view.AuthorView;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import java.util.Collections;
-import java.util.List;
+import java.io.IOException;
 
-public class Main {
-    public static void main(String[] args) {
-        Author author = new Author();
-        AuthorView authorView = new AuthorView();
-        AuthorController authorController = new AuthorController(author, authorView);
+public class Main extends Application {
 
-        List<Author> authors = Collections.emptyList();
-        AuthorListView authorListView = new AuthorListView();
-        AuthorListController authorListController = new AuthorListController(authors, authorListView);
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Main.fxml"));
+        Parent root = loader.load();
 
-        try {
-            authorListController.getAuthorByName("Angel");
-            authorListController.updateView();
-            String authorId = authorListController.getAuthorIdByPosition(0);
-            authorController.getAuthorById(authorId);
-            authorController.updateView();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        stage.setTitle("Researchers Search");
+        stage.setScene(new Scene(root, 800, 400));
+        stage.show();
     }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
 }
