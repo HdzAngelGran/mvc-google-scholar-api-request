@@ -16,7 +16,8 @@ public class Main extends Application {
         Parent root = loader.load();
 
         stage.setTitle("Researchers Search");
-        stage.setScene(new Scene(root, 800, 400));
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.setResizable(false);
         stage.show();
     }
 

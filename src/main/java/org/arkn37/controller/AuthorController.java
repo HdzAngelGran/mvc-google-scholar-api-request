@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Setter;
@@ -36,6 +37,9 @@ public class AuthorController {
 
     @FXML
     private ProgressIndicator loadingAuthor;
+
+    @FXML
+    private HBox authorInfoBox;
 
     @Setter
     private Author author = new Author();
@@ -104,8 +108,10 @@ public class AuthorController {
         name.setText(getName());
         email.setText(getEmail());
         affiliations.setText(getAffiliations());
-        if (!getThumbnail().isEmpty())
+        if (getThumbnail() != null && !getThumbnail().isEmpty()) {
             thumbnail.setImage(new Image(getThumbnail(), true));
+        }
+        authorInfoBox.setVisible(getName() != null && !getName().isEmpty());
     }
 
     @FXML
@@ -122,17 +128,20 @@ public class AuthorController {
         getAuthorTask.setOnRunning(event -> {
             resetAuthor();
             loadingAuthor.setVisible(true);
+            authorInfoBox.setVisible(false);
         });
 
         getAuthorTask.setOnSucceeded(event -> {
             loadingAuthor.setVisible(false);
             Author newAuthor = getAuthorTask.getValue();
             updateAuthor(newAuthor);
+            authorInfoBox.setVisible(true);
         });
 
         getAuthorTask.setOnFailed(event -> {
             resetAuthor();
             loadingAuthor.setVisible(false);
+            authorInfoBox.setVisible(false);
             getAuthorTask.getException().printStackTrace();
         });
 

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="mainPane"
-            xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.arkn37.controller.MainController"
-/>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.arkn37.controller.MainController"
+      stylesheets="@style.css">
+    <BorderPane fx:id="mainPane"
+                VBox.vgrow="ALWAYS"
+    />
+</VBox>

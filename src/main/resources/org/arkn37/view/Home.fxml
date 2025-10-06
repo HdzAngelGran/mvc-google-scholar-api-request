@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12">
-    <Label text="Welcome to the Home Page!">
-        <font>
-            <Font size="24.0" />
-        </font>F
-    </Label>
-    <Label text="Tecmilenio">
-      <font>
-         <Font size="18.0" />
-      </font>
-    </Label>
-    <Label text="Challenge 3" />
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@style.css">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <Label text="Welcome to GSA Request">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label text="Tecmilenio University">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label text="Challenge 3" />
+      <Label alignment="CENTER" contentDisplay="CENTER" text="Use the navigation bar to search for articles from Google Scholar or view your saved articles." textAlignment="CENTER" wrapText="true">
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </Label>
+   </children>
 </VBox>
