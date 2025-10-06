@@ -49,7 +49,7 @@ public class ArticleListCell extends ListCell<Article> {
             title.setText(article.getTitle());
             authors.setText(article.getAuthors());
             saveButton.setVisible(!justView);
-            if (justView)
+            if (!justView)
                 saveButton.setOnAction(event ->
                         onClicked.accept(article)
                 );
