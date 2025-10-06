@@ -22,6 +22,9 @@ dependencies {
 
     // Gson for JSON processing
     implementation("com.google.code.gson:gson:2.11.0")
+
+    // PostgreSQL JDBC driver
+    implementation("org.postgresql:postgresql:42.6.0")
 }
 
 tasks.test {
