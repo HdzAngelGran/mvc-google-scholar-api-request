@@ -2,6 +2,7 @@ package org.arkn37.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
 import org.arkn37.client.SerpApiClient;
@@ -45,6 +46,11 @@ public class ArticleListController implements Initializable {
             Article articleExtraInfo = serpApiClient.getCitationById(article.getCitationId());
             Article articleToSave = joinArticles(article, articleExtraInfo);
             articleRepository.save(articleToSave);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Article Saved");
+            alert.setHeaderText(null);
+            alert.setContentText("The article has been saved successfully.");
+            alert.showAndWait();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
