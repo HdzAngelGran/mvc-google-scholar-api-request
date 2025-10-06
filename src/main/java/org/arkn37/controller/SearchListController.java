@@ -77,4 +77,10 @@ public class SearchListController implements Initializable {
     public void setAuthorInfo(String authorId) {
         authorController.getAuthorById(authorId);
     }
+
+    public void reset() {
+        authorName.clear();
+        authorListView.getItems().clear();
+        authorController.resetAuthor();
+    }
 }

@@ -18,6 +18,7 @@ public class SearchController implements Initializable {
     @FXML
     private AnchorPane info;
 
+    private SearchListController searchListController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -26,8 +27,7 @@ public class SearchController implements Initializable {
             FXMLLoader authorLoader = new FXMLLoader(getClass().getResource("../view/Author.fxml"));
             Parent searchList = searchListLoader.load();
             Parent author = authorLoader.load();
-
-            SearchListController searchListController = searchListLoader.getController();
+            searchListController = searchListLoader.getController();
             searchListController.setAuthorController(authorLoader.getController());
 
             list.getChildren().add(searchList);
@@ -36,5 +36,9 @@ public class SearchController implements Initializable {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void reset() {
+        searchListController.reset();
     }
 }

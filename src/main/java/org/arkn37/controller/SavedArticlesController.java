@@ -52,6 +52,10 @@ public class SavedArticlesController implements Initializable {
         loadArticlesFromDatabase();
     }
 
+    public void refresh() {
+        loadArticlesFromDatabase();
+    }
+
     private void loadArticlesFromDatabase() {
         Task<List<Article>> loadTask = new Task<>() {
             @Override

@@ -15,6 +15,8 @@ public class MainController {
     private BorderPane mainPane;
 
     private final Map<String, Parent> pages = new HashMap<>();
+    private SavedArticlesController savedArticlesController;
+    private SearchController searchController;
 
     public void initialize() throws IOException {
         FXMLLoader navbarLoader = new FXMLLoader(getClass().getResource("../view/Navbar.fxml"));
@@ -25,8 +27,11 @@ public class MainController {
         Parent footer = footerLoader.load();
         FXMLLoader searchLoader = new FXMLLoader(getClass().getResource("../view/Search.fxml"));
         Parent search = searchLoader.load();
+        searchController = searchLoader.getController();
+
         FXMLLoader savedArticlesLoader = new FXMLLoader(getClass().getResource("../view/SavedArticles.fxml"));
         Parent savedArticles = savedArticlesLoader.load();
+        savedArticlesController = savedArticlesLoader.getController();
 
         pages.put("home", home);
         pages.put("search", search);
@@ -42,6 +47,10 @@ public class MainController {
     }
 
     public void changePage(String pageName) {
+        if ("articles".equals(pageName))
+            savedArticlesController.refresh();
+        if ("search".equals(pageName))
+            searchController.reset();
         Parent view = getPageByName(pageName);
         this.mainPane.setCenter(view);
     }
