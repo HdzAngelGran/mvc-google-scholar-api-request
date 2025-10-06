@@ -12,4 +12,5 @@
 >
     <Button onAction="#handlePageAction" text="Home" userData="home"/>
     <Button onAction="#handlePageAction" text="Search" userData="search"/>
+    <Button onAction="#handlePageAction" text="Articles" userData="articles"/>
 </HBox>

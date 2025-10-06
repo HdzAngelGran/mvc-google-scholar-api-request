@@ -25,9 +25,12 @@ public class MainController {
         Parent footer = footerLoader.load();
         FXMLLoader searchLoader = new FXMLLoader(getClass().getResource("../view/Search.fxml"));
         Parent search = searchLoader.load();
+        FXMLLoader savedArticlesLoader = new FXMLLoader(getClass().getResource("../view/SavedArticles.fxml"));
+        Parent savedArticles = savedArticlesLoader.load();
 
         pages.put("home", home);
         pages.put("search", search);
+        pages.put("articles", savedArticles);
 
         NavbarController navbarController = navbarLoader.getController();
 

@@ -4,21 +4,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox spacing="20.0"
-      style="-fx-padding: 2em;"
-      xmlns="http://javafx.com/javafx/17.0.12"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.arkn37.controller.SearchController"
->
+<VBox spacing="20.0" style="-fx-padding: 2em;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.arkn37.controller.SearchController">
     <HBox>
         <Label text="Author Search">
             <font>
-                <Font size="24.0"/>
+                <Font size="24.0" />
             </font>
         </Label>
     </HBox>
-    <GridPane>
-        <AnchorPane fx:id="list" prefWidth="200.0"/>
-        <AnchorPane fx:id="info" GridPane.columnIndex="1" prefWidth="100.0"/>
+    <GridPane gridLinesVisible="true" hgap="10" vgap="10" VBox.vgrow="ALWAYS">
+        <AnchorPane fx:id="list" prefWidth="200.0" />
+        <AnchorPane fx:id="info" prefWidth="100.0" GridPane.columnIndex="1" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
 </VBox>

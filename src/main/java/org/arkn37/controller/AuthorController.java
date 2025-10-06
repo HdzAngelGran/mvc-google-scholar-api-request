@@ -2,12 +2,22 @@ package org.arkn37.controller;
 
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import lombok.Setter;
 import org.arkn37.client.SerpApiClient;
+import org.arkn37.model.Article;
 import org.arkn37.model.Author;
 
+import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 public class AuthorController {
@@ -20,6 +30,9 @@ public class AuthorController {
 
     @FXML
     private Label affiliations;
+
+    @FXML
+    private ImageView thumbnail;
 
     @FXML
     private ProgressIndicator loadingAuthor;
@@ -61,12 +74,12 @@ public class AuthorController {
         this.author.setThumbnail(thumbnail);
     }
 
-    public List<Object> getInterests() {
-        return this.author.getInterests();
+    public List<Article> getArticles() {
+        return this.author.getArticles();
     }
 
-    public void setInterests(List<Object> interests) {
-        this.author.setInterests(interests);
+    public void setArticles(List<Article> articles) {
+        this.author.setArticles(articles);
     }
 
     public void resetAuthor() {
@@ -74,7 +87,7 @@ public class AuthorController {
         setEmail("");
         setAffiliations("");
         setThumbnail("");
-        setInterests(null);
+        setArticles(Collections.emptyList());
         updateView();
     }
 
@@ -83,7 +96,7 @@ public class AuthorController {
         setEmail(author.getEmail());
         setAffiliations(author.getAffiliations());
         setThumbnail(author.getThumbnail());
-        setInterests(author.getInterests());
+        setArticles(author.getArticles());
         updateView();
     }
 
@@ -91,6 +104,8 @@ public class AuthorController {
         name.setText(getName());
         email.setText(getEmail());
         affiliations.setText(getAffiliations());
+        if (!getThumbnail().isEmpty())
+            thumbnail.setImage(new Image(getThumbnail(), true));
     }
 
     @FXML
@@ -122,6 +137,39 @@ public class AuthorController {
         });
 
         new Thread(getAuthorTask).start();
+    }
+
+    @FXML
+    void showArticles() {
+        if (author == null || author.getArticles() == null || author.getArticles().isEmpty()) {
+            System.out.println("No articles found for this author.");
+            return;
+        }
+
+        try {
+            FXMLLoader articleListLoad = new FXMLLoader(getClass().getResource("../view/ArticleList.fxml"));
+
+            Parent articleList = articleListLoad.load();
+
+            ArticleListController articleListController = articleListLoad.getController();
+
+            articleListController.setArticles(author.getArticles());
+
+            Stage popupStage = new Stage();
+            popupStage.setTitle(author.getName() + "'s Articles");
+            popupStage.setScene(new Scene(articleList));
+
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            Stage owner = (Stage) name.getScene().getWindow();
+            popupStage.initOwner(owner);
+
+            popupStage.showAndWait();
+
+        } catch (IOException e) {
+            System.err.println("Failed to open articles window.");
+            e.printStackTrace();
+        }
     }
 
 }

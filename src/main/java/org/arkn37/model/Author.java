@@ -17,5 +17,5 @@ public class Author {
     private String email;
     private String affiliations;
     private String thumbnail;
-    private List<Object> interests;
+    private List<Article> articles;
 }

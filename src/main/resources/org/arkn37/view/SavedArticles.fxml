@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0"
+      style="-fx-padding: 2em;"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.arkn37.controller.SavedArticlesController"
+      prefHeight="400.0" prefWidth="600.0"
+>
+    <HBox>
+        <Label text="Articles">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Label>
+    </HBox>
+    <ListView fx:id="articleListView" style="-fx-padding: 1em;"
+              GridPane.columnSpan="2" GridPane.rowIndex="1">
+        <placeholder>
+            <VBox alignment="TOP_CENTER">
+                <ProgressIndicator fx:id="loadingList" visible="false"/>
+                <Label style="-fx-font-size: 14px; -fx-text-fill: grey;" text="No content to display."/>
+                <Label style="-fx-text-fill: dimgrey;" text="Go to author search and save an article."/>
+            </VBox>
+        </placeholder>
+    </ListView>
+</VBox>
